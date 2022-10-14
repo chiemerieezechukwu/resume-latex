@@ -1,0 +1,199 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{color}
+\usepackage{fontawesome5}
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+% \usepackage{changepage} % imported to be able to use \begin{adjustwidth}
+
+\hypersetup{
+  breaklinks=true,
+  colorlinks=true,
+  linkcolor=cyan,
+  urlcolor=MyDarkBlue,
+  pdfauthor={Chiemerie Ezechukwu},
+  pdftitle={Resume}
+}
+
+\definecolor{MyDarkBlue}{rgb}{0, 0, 0.45}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting parameters  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\tabin}
+\setlength{\tabin}{1em}
+\newlength{\secsep}
+\setlength{\secsep}{0.1cm}
+
+\setlength{\hsize}{0.9\hsize}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\definecolor{contactgray}{gray}{0.3}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template Definitions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\doublelineunder}{\vspace{-4pt}\underline{\rule{525pt}{2pt}}\vspace{2pt}}
+\newcommand{\lineunder}{\vspace*{-8pt}\\\hspace*{-6pt}\hrulefill\\\vspace*{-15pt}}
+\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
+\newcommand{\position}[1]{\begin{center}\textsc{#1}\end{center}}
+\newcommand{\contact}[1]{\vspace{\secsep}\begin{center}\color{contactgray}{\small#1}\end{center}}
+\newcommand{\education}[4]{\vspace{\secsep}\textbf{#1\hfill#2}\\\textit{#3\hfill#4}\vspace{2\secsep}}
+\newcommand{\educationwithgrade}[5]{\vspace{\secsep}\textbf{#1\hfill#2}\\\textit{#3\hfill#4}\linebreak\textbf{\textit{#5}}\vspace{2\secsep}}
+
+\newenvironment{tabbedsection}[1]{
+  \begin{list}{}{
+    \setlength{\itemsep}{0pt}
+    \setlength{\labelsep}{0pt}
+    \setlength{\labelwidth}{0pt}
+    \setlength{\leftmargin}{\tabin}
+    \setlength{\rightmargin}{\tabin}
+    \setlength{\listparindent}{0pt}
+    \setlength{\parsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\partopsep}{0pt}
+    \setlength{\topsep}{#1}
+  }
+  \item[]
+}{\end{list}}
+
+
+\newenvironment{nospacetabbing}{\begin{tabbing}}{\end{tabbing}\vspace{-1.2em}}
+
+\newenvironment{resume_header}{}{\vspace{0pt}}
+
+\newenvironment{resume_section}[1]{
+  \filbreak
+  \vspace{2\secsep}
+  \textsc{\large#1}
+  \lineunder
+  \begin{tabbedsection}{\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{resume_subsection}[2]{
+  \vspace{\secsep}
+  \textbf{#1 \hfill #2} \\ \vspace{-10pt}
+  \begin{tabbedsection}{0.5\secsep}
+}{\end{tabbedsection}}
+
+
+\newenvironment{subitems}{
+  \renewcommand{\labelitemi}{-}
+  \begin{itemize}
+  \setlength{\labelsep}{1em}
+}{\end{itemize}}
+
+\newenvironment{resume_employer}[4]{
+  \vspace{\secsep}
+  \textbf{#1 \hfill #4} \\ 
+  \textit{\small #2 #3}
+  \begin{tabbedsection}{0pt}
+  \begin{subitems}
+}{\end{subitems}\end{tabbedsection}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Start Document     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{resume_header}
+
+  \name{Chiemerie Ezechukwu}
+  \position{Cloud Engineer}
+  \doublelineunder
+  % \begin{adjustwidth}{-40pt}{-40pt} % used to manipulate margin
+  % \end{adjustwidth} % used to manipulate margin
+    \contact{
+      % \faIcon{phone} (+39) XXX XXX XXXX \hspace{0.5cm}
+      \faIcon{envelope} \href{mailto:chiemerieezechukwu@outlook.com}{\underline{\smash{chiemerieezechukwu@outlook.com}}}\hspace{0.5cm}
+      \faIcon{map-marker-alt} Krakow, Poland \hspace{0.5cm}
+      \faIcon{github} \href{https://github.com/chiemerieezechukwu}{\underline{\smash{Github}}} \hspace{0.5cm}
+      \faIcon{linkedin} \href{https://www.linkedin.com/in/chiemerieezechukwu/}{\underline{\smash{LinkedIn}}}
+    }
+    \vspace{4\secsep}
+
+\end{resume_header}
+
+% \begin{resume_section}{Summary}
+%   Software Developer with a degree in computer science and hands-on experience developing, deploying and debugging software solutions in the cloud.
+%   Motivated and eager to take on new challenges while expanding my skill set.
+% \end{resume_section}
+
+\begin{resume_section}{Work Experience}
+  \begin{resume_employer}{Cloud Engineer}{Kolomolo,}{Krakow, Poland}{July 2022 -- Present}
+    \item Collaborate with the development and engineering teams to analyze and select the best cloud solutions for their business needs.
+    \item Modify and improve existing IaC (Terraform, Pulumi) files to be more robust while adhering to best practices.
+    \item Design and develop new cloud solutions, maintain existing ones while adhering to industry best practices.
+    \item Regularly evaluate current systems and offer suggestions for enhancements.
+    \item Interact with client, provide cloud support and assist to migrate existing on-premise systems to the cloud.
+  \end{resume_employer}
+
+  \begin{resume_employer}{Software Developer}{Storm Reply,}{Turin, Italy}{April 2021 -- June 2022}
+    \item Develop, deploy and debug software written in Python for an IoT platform with 100\% on-time record to meet stakeholder's SLAs and deadlines
+    \item Engineer unit test cases and perform comprehensive unit testing to ensure and maintain source code quality
+    \item Manipulate queries to downstream resources (DynamoDB, Elasticsearch) in AWS lambda to improve the integration latency of several ApiGateway endpoints
+    \item Develop, integrate and manage new API endpoints to support internal application requirements
+    \item Design and implementation of new features for a multi component backend platform hosted on AWS to manage and monitor energy related IoT devices
+    \item Analysis of solutions and architectures to allow releases without downtime within a distributed serverless IoT platform
+  \end{resume_employer}
+
+  \begin{resume_employer}{Web Developer}{Freelancer}{}{December 2019 -- April 2021}
+    \item Developed a web application for human resource management using Flask and its templating engine (Jinja2)
+    \item Converted a Wordpress site to ReactJS increasing its responsiveness in the process
+    \item Hosted static websites and contents on AWS making use of AWS S3's static website hosting, Cloudfront and Route53
+  \end{resume_employer}
+\end{resume_section}
+
+% \begin{resume_section}{Personal Projects}
+
+%   \begin{resume_subsection}{Python Project Management Library}{October 2021 -- Present}
+%     \begin{subitems}
+%       \item Designed and implemented a python library with several classes to model project management activities and objects. \href{https://github.com/chiemerieezechukwu/project-management}{github.com/chiemerieezechukwu/project-management}
+%     \end{subitems}
+%   \end{resume_subsection}
+
+%   \begin{resume_subsection}{Chat Web App}{July 2020}
+%     \begin{subitems}
+%       \item Used vanilla Javascript, CSS, Flask templating engine (Jinja2) to set up a fully responsive frontend and Flask, Flask-SocketIO,
+%       PostgreSQL for the backend. \href{https://github.com/chiemerieezechukwu/Flask-Chat--Flask-socketio-}{github.com/chiemerieezechukwu/Flask-Chat--Flask-socketio-}
+%     \end{subitems}
+%   \end{resume_subsection}
+
+% \end{resume_section}
+
+\begin{resume_section}{Skills}
+  \begin{nospacetabbing}
+    \textbf{Technical Skills} \= \hspace{2em} \= AWS, Python, C\#, SQLAlchemy, Node, Typescript, Git, Docker, Docker Compose\\*
+    \textbf{Cloud Technologies} \> \> AWS Lambda, S3, ApiGateway, DynamoDB, EC2, IoT Core, Cloudformation, Terraform\\*
+    \textbf{Web Technologies} \> \> HTML/CSS/Javascript, Flask, ReactJS, Django and Django Rest Framework\\*
+    \textbf{Languages} \> \> Proficient in English; Fluent in Russian\\*
+    \textbf{Other Skills} \> \> Teamwork, Problem Solving, Agile frameworks, Microsoft Project, \LaTeX\\*
+  \end{nospacetabbing}
+\end{resume_section}
+
+\begin{resume_section}{Education}
+  \educationwithgrade{Politecnico di Torino}{October 2019 -- March 2022}{M.Sc. Engineering and Management}{Turin, Italy}{Final Grade: 104/110}
+
+  \education{Tver State Technical University}{September 2015 -- July 2019}{B.Sc. Computer Science}{Tver, Russia}
+\end{resume_section}
+
+\begin{resume_section}{Certifications}
+  \begin{subitems}
+    \item \href{https://www.credly.com/badges/4af15df4-f5b2-4d6b-b989-bb47e71c9986}{AWS Certified Developer -- Associate (DVA)} \hfill November 2021
+    \item \href{https://www.scrumstudy.com/certification/verify?type=SFC&number=848920}{Scrum Fundamentals Certified (SFC)} \hfill June 2021
+    \item \href{https://www.credly.com/badges/52a6f0ff-d46a-4d42-9bb1-ea2b7fb01526}{AWS Certified Solutions Architect -- Associate (SAA)} \hfill December 2020
+    \item \href{https://www.credly.com/badges/488ba1a8-a95a-46f5-943b-c275bc7e6178}{AWS Certified Cloud Practitioner (CLF)} \hfill November 2020
+  \end{subitems}
+\end{resume_section}
+
+\end{document}
